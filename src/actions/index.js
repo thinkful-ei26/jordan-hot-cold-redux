@@ -2,8 +2,10 @@
 
 //1) input a guess
 //2) start a new game
-//3) get the info from the game
+//3) display FAQ/HOW TO
 
+
+//user gets feedback and guess gets appended to history of guesses array
 export const NEW_GUESS = 'NEW_GUESS';
 export const newGuess = (guess) => ({
     type: NEW_GUESS,
@@ -16,7 +18,7 @@ export const newGame = (solution) => ({
     solution
 });
 
-export const GAME_FEEDBACK = 'GAME_INFO';
-export const gameInfo = () => ({
-    type: GAME_INFO,
-})
+// export const GAME_FEEDBACK = 'GAME_FEEDBACK';
+// export const gameFeedback = () => ({
+//     type: GAME_FEEDBACK,
+// })
