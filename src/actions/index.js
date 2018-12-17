@@ -17,3 +17,9 @@ export const newGame = (solution) => ({
     type: NEW_GAME,
     solution
 });
+
+
+export const AURAL_STATUS = 'AURAL_STATUS';
+export const auralStatus = () => ({
+    type: AURAL_STATUS
+});

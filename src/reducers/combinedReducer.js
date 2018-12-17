@@ -1,4 +1,4 @@
-import {NEW_GAME, NEW_GUESS} from '../actions/index.js';
+import {NEW_GAME, NEW_GUESS, AURAL_STATUS } from '../actions/index.js';
 
 const initialState = {
     recentGuesses: [],
@@ -20,6 +20,7 @@ export const combinedReducer = (state=initialState, action) => {
     }
 
     if (action.type === NEW_GUESS) {
+        console.log('new guess')
         const feedback = (solution, guess) => {
         const difference = Math.abs(solution - guess);
         
@@ -50,6 +51,25 @@ export const combinedReducer = (state=initialState, action) => {
             currentFeedback: feedback(state.solution, action.guess),
             recentGuesses: [...state.recentGuesses, action.guess]
         });
+    }
+
+
+    if (action.type === AURAL_STATUS) {
+        // const { guesses, feedback } = this.props.state;
+    
+        // If there's not exactly 1 guess, we want to
+        // pluralize the nouns in this aural update.
+        const pluralize = this.recentGuesses.length !== 1;
+    
+        let  auralStatus = `Here's the status of the game right now: ${this.currentFeedback} You've made ${this.recentGuesses.length} ${pluralize ? 'guesses' : 'guess'}.`;
+    
+        if (this.recentGuesses.length > 0) {
+          auralStatus += ` ${pluralize ? 'In order of most- to least-recent, they are' : 'It was'}: ${this.recentGuesses.reverse().join(', ')}`;
+        }
+
+        return Object.assign({}, state, {
+            auralStatus
+        })
     }
 
     return state;

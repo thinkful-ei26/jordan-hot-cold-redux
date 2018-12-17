@@ -8,14 +8,11 @@ export class GuessForm extends React.Component {
   onSubmit(event) {
     event.preventDefault();
 
-    // if (this.props.onMakeGuess) {
-      const value = this.input.value;
-      this.props.dispatch(newGuess(value));
-    // }
+    const value = this.input.value;
+    this.props.dispatch(newGuess(value));
     this.input.value = '';
     this.input.focus();
 
-    // onClick={(e) => this.props.dispatch(newGuess(e.target.value))}
   }
 
   render() {
@@ -46,12 +43,4 @@ export class GuessForm extends React.Component {
   }
 }
 
-const mapStateToProps=(state) => {
-  console.log(state)
-  return {
-    newGuess: state.newGuess
-  }
-};
-
-
-export default connect(mapStateToProps)(GuessForm);
+export default connect()(GuessForm);
