@@ -1,4 +1,4 @@
-import {NEW_GAME, NEW_GUESS, GAME_FEEDBACK} from '../actions/index.js';
+import {NEW_GAME, NEW_GUESS} from '../actions/index.js';
 
 const initialState = {
     recentGuesses: [],
@@ -11,10 +11,11 @@ const initialState = {
 export const combinedReducer = (state=initialState, action) => {
     //all actions should be handled here
     if (action.type === NEW_GAME) {
+        console.log('im running')
         return Object.assign({}, state, {
             recentGuesses: [],
             currentFeedback: 'Make a guess!',
-            solution: action.solution
+            solution: action.solution,
         });
     }
 
@@ -48,8 +49,7 @@ export const combinedReducer = (state=initialState, action) => {
         return Object.assign({}, state, {
             currentFeedback: feedback(state.solution, action.guess),
             recentGuesses: [...state.recentGuesses, action.guess]
-        })
-
+        });
     }
 
     return state;

@@ -17,8 +17,3 @@ export const newGame = (solution) => ({
     type: NEW_GAME,
     solution
 });
-
-// export const GAME_FEEDBACK = 'GAME_FEEDBACK';
-// export const gameFeedback = () => ({
-//     type: GAME_FEEDBACK,
-// })

@@ -1,8 +1,11 @@
 import React from 'react';
 
 import './top-nav.css';
+import { newGame } from '../actions';
+import {connect} from 'react-redux';
+// import store from '../store.js';
 
-export default function TopNav(props) {
+export function TopNav(props) {
   return (
     <nav>
       <ul className="clearfix">
@@ -20,7 +23,7 @@ export default function TopNav(props) {
             href="#feedback"
             className="new"
             aria-label="Start a new game"
-            onClick={() => props.onRestartGame()}
+            onClick={() => props.dispatch(newGame(Math.floor(Math.random() * 100) + 1))}
           >
             + New Game
           </a>
@@ -40,3 +43,13 @@ export default function TopNav(props) {
     </nav>
   );
 }
+
+// const mapStateToProps=(state) => {
+//   console.log(state)
+//   return {
+//     correctAnswer: state.solution
+//   }
+// };
+
+
+export default connect()(TopNav);
